@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 
 #define tab "\t"
@@ -12,7 +12,7 @@ void main()
 	const int n = 10;
 	int arr[n] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	
-	//Вывод исходного массива на экран:
+	//Р’С‹РІРѕРґ РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР° РЅР° СЌРєСЂР°РЅ:
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
@@ -20,11 +20,11 @@ void main()
 	cout << endl;
 	
 	int number_of_shifts;
-	cout << "Введите количество сдвигов: "; cin >> number_of_shifts;
-	char direction; //Направление сдвига
-	cout << "Выберите направление (l - left, r - right): "; cin >> direction;
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРґРІРёРіРѕРІ: "; cin >> number_of_shifts;
+	char direction; //РќР°РїСЂР°РІР»РµРЅРёРµ СЃРґРІРёРіР°
+	cout << "Р’С‹Р±РµСЂРёС‚Рµ РЅР°РїСЂР°РІР»РµРЅРёРµ (l - left, r - right): "; cin >> direction;
 	if (direction == 'r')number_of_shifts = n - number_of_shifts;
-	//Сдвиг массива влево:
+	//РЎРґРІРёРі РјР°СЃСЃРёРІР° РІР»РµРІРѕ:
 #ifdef Shift_To_Left
 	for (int i = 0; i < number_of_shifts; i++)
 	{
@@ -37,7 +37,7 @@ void main()
 		arr[n - 1] = buffer;
 	}
 
-	//Вывод сдвинутого массива на экран:
+	//Р’С‹РІРѕРґ СЃРґРІРёРЅСѓС‚РѕРіРѕ РјР°СЃСЃРёРІР° РЅР° СЌРєСЂР°РЅ:
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
@@ -46,7 +46,7 @@ void main()
 #endif // Shift_To_Left
 
 #ifdef Shift_To_Right
-	//Сдвиг массива вправо:
+	//РЎРґРІРёРі РјР°СЃСЃРёРІР° РІРїСЂР°РІРѕ:
 	for (int i = 0; i < number_of_shifts; i++)
 	{
 		int buffer = arr[n - 1];
@@ -56,7 +56,7 @@ void main()
 		}
 		arr[0] = buffer;
 	}
-	//Вывод сдвинутого массива на экран:
+	//Р’С‹РІРѕРґ СЃРґРІРёРЅСѓС‚РѕРіРѕ РјР°СЃСЃРёРІР° РЅР° СЌРєСЂР°РЅ:
 	/*for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
