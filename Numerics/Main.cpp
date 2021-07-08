@@ -4,8 +4,9 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-//#define Binary
-//#define Hexadecimal
+#define Binary
+#define Hexadecimal_1
+#define Hexadecimal_2
 void main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -37,8 +38,8 @@ void main()
 	}
 	cout << endl;
 #endif // Binary
-#ifdef Hexadecimal
-	const int n = 64;
+#ifdef Hexadecimal_1
+	const int n = 8;
 	char hex[n] = {};
 	cout << "Шестнадцатеричное число будет занимать " << sizeof(hex) << " Байт памяти" << endl;
 	unsigned long decimal;
@@ -47,31 +48,31 @@ void main()
 	while (decimal)
 	{
 		hex[i] = decimal % 16;
-		if (hex[i] == 1)hex[i] = { '1' };
-		if (hex[i] == 2)hex[i] = { '2' };
-		if (hex[i] == 3)hex[i] = { '3' };
-		if (hex[i] == 4)hex[i] = { '4' };
-		if (hex[i] == 5)hex[i] = { '5' };
-		if (hex[i] == 6)hex[i] = { '6' };
-		if (hex[i] == 7)hex[i] = { '7' };
-		if (hex[i] == 8)hex[i] = { '8' };
-		if (hex[i] == 9)hex[i] = { '9' };
-		if (hex[i] == 10)hex[i] = { 'A' };
-		if (hex[i] == 11)hex[i] = { 'B' };
-		if (hex[i] == 12)hex[i] = { 'C' };
-		if (hex[i] == 13)hex[i] = { 'D' };
-		if (hex[i] == 14)hex[i] = { 'E' };
-		if (hex[i] == 15)hex[i] = { 'F' };
-
 		decimal /= 16;
 		i++;
 	}
 	for (--i; i >= 0; i--)
 	{
-		cout << hex[i];
+		if (hex[i] < 10)
+		{
+			cout << hex[i];
+		}
+		else
+		{
+			switch (hex[i])
+			{
+			case 10: cout << "A"; break;
+			case 11: cout << "B"; break;
+			case 12: cout << "C"; break;
+			case 13: cout << "D"; break;
+			case 14: cout << "E"; break;
+			case 15: cout << "F"; break;
+			}
+		}
 	}
 	cout << endl;
-#endif // Hexadecimal
+#endif // Hexadecimal_1
+#ifdef Hexadecimal_2
 	int decimal;  //Десятичное число, введённое с клавитатуры
 	const int n = 8;  //Максимальная разрядность Hex числа.
 	char hex[n]{};  //Этот массив будет хранить разряды Hex числа
@@ -101,4 +102,6 @@ void main()
 		cout << char(hex[i] < 10 ? hex[i] + 48 : hex[i] + 55);
 	}
 	cout << endl;
+#endif // Hexadecimal_2
+
 }
