@@ -1,31 +1,34 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 //#define Binary
-#define Hexademical
+//#define Hexadecimal
 void main()
 {
 	setlocale(LC_ALL, "Rus");
-	//dec = decimal (Десятичная система счисления)
-	//bin = binary  (Двоичная система счисления)
-	//hex = hexademical (Шестнадцатеричная система счисления)
+	//dec = decimal (Р”РµСЃСЏС‚РёС‡РЅР°СЏ СЃРёСЃС‚РµРјР° СЃС‡РёСЃР»РµРЅРёСЏ)
+	//bin = binary  (Р”РІРѕРёС‡РЅР°СЏ СЃРёСЃС‚РµРјР° СЃС‡РёСЃР»РµРЅРёСЏ)
+	//hex = hexadecimal (РЁРµСЃС‚РЅР°РґС†Р°С‚РµСЂРёС‡РЅР°СЏ СЃРёСЃС‚РµРјР° СЃС‡РёСЃР»РµРЅРёСЏ)
 	
 #ifdef Binary
-	const int n = 64;  //Максимальная разрядность двоичного числа
-	bool bin[n] = {};   //Этот массив будет хранить разряды двоичного числа
-	cout << "Двоичное число будет занимать " << sizeof(bin) << " Байт памяти" << endl;
-	unsigned long long int decimal;       //Двоичное число, введённое с клавиатуры
-	cout << "Введите десятичное число: "; cin >> decimal;
+	const int n = 64;  //РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЂР°Р·СЂСЏРґРЅРѕСЃС‚СЊ РґРІРѕРёС‡РЅРѕРіРѕ С‡РёСЃР»Р°
+	bool bin[n] = {};   //Р­С‚РѕС‚ РјР°СЃСЃРёРІ Р±СѓРґРµС‚ С…СЂР°РЅРёС‚СЊ СЂР°Р·СЂСЏРґС‹ РґРІРѕРёС‡РЅРѕРіРѕ С‡РёСЃР»Р°
+	cout << "Р”РІРѕРёС‡РЅРѕРµ С‡РёСЃР»Рѕ Р±СѓРґРµС‚ Р·Р°РЅРёРјР°С‚СЊ " << sizeof(bin) << " Р‘Р°Р№С‚ РїР°РјСЏС‚Рё" << endl;
+	unsigned long long int decimal;       //Р”РІРѕРёС‡РЅРѕРµ С‡РёСЃР»Рѕ, РІРІРµРґС‘РЅРЅРѕРµ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
+	cout << "Р’РІРµРґРёС‚Рµ РґРµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ: "; cin >> decimal;
 	int i = 0;
 	/*while (decimal)
 	{
 		bin[i] = decimal % 2;
 		decimal /= 2;
-		i++;           //переходим на следующий элемент массива
+		i++;           //РїРµСЂРµС…РѕРґРёРј РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
 	}*/
 	for (; decimal; decimal /= 2/*, i++*/)bin[i++] = decimal % 2;
-	// , - сomma operator - позволяет в то место, гдеожидается одно выражение поместить несколько операторов
-	//Выводим остатки от деления в обратном порядке
+	// , - СЃomma operator - РїРѕР·РІРѕР»СЏРµС‚ РІ С‚Рѕ РјРµСЃС‚Рѕ, РіРґРµ РѕР¶РёРґР°РµС‚СЃСЏ РѕРґРЅРѕ РІС‹СЂР°Р¶РµРЅРёРµ РїРѕРјРµСЃС‚РёС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ РѕРїРµСЂР°С‚РѕСЂРѕРІ
+	//Р’С‹РІРѕРґРёРј РѕСЃС‚Р°С‚РєРё РѕС‚ РґРµР»РµРЅРёСЏ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ
 	for (--i; i >= 0; i--)
 	{
 		cout << bin[i];
@@ -34,38 +37,68 @@ void main()
 	}
 	cout << endl;
 #endif // Binary
+#ifdef Hexadecimal
 	const int n = 64;
 	char hex[n] = {};
-
-	int decimal;
-	cout << "Введите десятичное число: "; cin >> decimal;
+	cout << "РЁРµСЃС‚РЅР°РґС†Р°С‚РµСЂРёС‡РЅРѕРµ С‡РёСЃР»Рѕ Р±СѓРґРµС‚ Р·Р°РЅРёРјР°С‚СЊ " << sizeof(hex) << " Р‘Р°Р№С‚ РїР°РјСЏС‚Рё" << endl;
+	unsigned long decimal;
+	cout << "Р’РІРµРґРёС‚Рµ РґРµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ: "; cin >> decimal;
 	int i = 0;
 	while (decimal)
 	{
 		hex[i] = decimal % 16;
-		
-		/*if (hex[i] == 10)hex[i] = { 'A' };
+		if (hex[i] == 1)hex[i] = { '1' };
+		if (hex[i] == 2)hex[i] = { '2' };
+		if (hex[i] == 3)hex[i] = { '3' };
+		if (hex[i] == 4)hex[i] = { '4' };
+		if (hex[i] == 5)hex[i] = { '5' };
+		if (hex[i] == 6)hex[i] = { '6' };
+		if (hex[i] == 7)hex[i] = { '7' };
+		if (hex[i] == 8)hex[i] = { '8' };
+		if (hex[i] == 9)hex[i] = { '9' };
+		if (hex[i] == 10)hex[i] = { 'A' };
 		if (hex[i] == 11)hex[i] = { 'B' };
 		if (hex[i] == 12)hex[i] = { 'C' };
 		if (hex[i] == 13)hex[i] = { 'D' };
 		if (hex[i] == 14)hex[i] = { 'E' };
-		if (hex[i] == 15)hex[i] = { 'F' };*/
-		switch (hex[i] >= 10)
-		{
-		case 10: hex[i] = { 'A' }; break;
-		case 11: hex[i] = { 'B' }; break;
-		case 12: hex[i] = { 'c' }; break;
-		case 13: hex[i] = { 'D' }; break;
-		case 14: hex[i] = { 'E' }; break;
-		case 15: hex[i] = { 'F' }; break;
-		default: hex[i];
-		}
+		if (hex[i] == 15)hex[i] = { 'F' };
+
 		decimal /= 16;
 		i++;
 	}
 	for (--i; i >= 0; i--)
 	{
 		cout << hex[i];
+	}
+	cout << endl;
+#endif // Hexadecimal
+	int decimal;  //Р”РµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ, РІРІРµРґС‘РЅРЅРѕРµ СЃ РєР»Р°РІРёС‚Р°С‚СѓСЂС‹
+	const int n = 8;  //РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЂР°Р·СЂСЏРґРЅРѕСЃС‚СЊ Hex С‡РёСЃР»Р°.
+	char hex[n]{};  //Р­С‚РѕС‚ РјР°СЃСЃРёРІ Р±СѓРґРµС‚ С…СЂР°РЅРёС‚СЊ СЂР°Р·СЂСЏРґС‹ Hex С‡РёСЃР»Р°
+	cout << "Р’РІРµРґРёС‚Рµ РґРµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ: "; cin >> decimal;
+	int i = 0;  //РЎС‡С‘С‚С‡РёРє СЂР°Р·СЂСЏРґР°
+	for (; decimal;)
+	{
+		hex[i] = decimal % 16;
+		decimal /= 16;
+		i++;
+	}
+	cout << "0x";
+	for (--i; i >= 0; i--)
+	{
+		/*switch (hex[i])
+		{
+		case 10:cout << "A"; break;
+		case 11:cout << "C"; break;
+		case 12:cout << "C"; break;
+		case 13:cout << "D"; break;
+		case 14:cout << "E"; break;
+		case 15:cout << "F"; break;
+		default:cout << hex[i];
+		}*/
+		/*if (hex[i] < 10)cout << hex[i];
+		else cout << char(hex[i] + 55);*/
+		cout << char(hex[i] < 10 ? hex[i] + 48 : hex[i] + 55);
 	}
 	cout << endl;
 }
