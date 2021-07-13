@@ -17,8 +17,12 @@ void main()
 	//rand();  //Возвращает псевдослучайные числа в диапазоне от 0 до 32 767 (MAX_RAND)
 	int Max_Number;
 	int Min_Number;
-	cout << "Введите максимально возможное число: "; cin >> Max_Number; 
-	cout << "Введите минимально возможное число: "; cin >> Min_Number;  
+	do
+	{
+		cout << "Введите максимально возможное число: "; cin >> Max_Number;
+		cout << "Введите минимально возможное число: "; cin >> Min_Number;
+		if (Min_Number >= Max_Number)cout << "Будте внимательны, повторите ввод!" << endl;
+	} while (Min_Number >= Max_Number);
 	//srand(time(NULL));
 	//Заполнение массива случайными числами
 	for (int i = 0; i < n; i++)
@@ -32,14 +36,13 @@ void main()
 	}
 	cout << endl;
 	
-	int buffer;
 	for (int i = 0; i < n - 1; i++)
 	{
 		for (int j = 0; j < n - i - 1; j++)
 		{
 			if (arr[j] > arr[j + 1])
 			{
-				buffer = arr[j];
+				int buffer = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = buffer;
 			}

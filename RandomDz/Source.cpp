@@ -1,6 +1,4 @@
 #include<iostream>
-#include<stdlib.h>
-#include<time.h>;
 using namespace std;
 using std::cout;
 using std::cin;
