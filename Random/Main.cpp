@@ -29,14 +29,15 @@ void main()
 	{
 		arr[i] = rand() % (Max_Number - Min_Number) + Min_Number ;
 	}
-	//Вывод массива на экран
+	//Вывод исходного массива на экран
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
 	}
 	cout << endl;
 	
-	for (int i = 0; i < n - 1; i++)
+	//Сортировка массива пузырьком
+	/*for (int i = 0; i < n - 1; i++)
 	{
 		for (int j = 0; j < n - i - 1; j++)
 		{
@@ -47,8 +48,25 @@ void main()
 				arr[j + 1] = buffer;
 			}
 		}
+	}*/
+	
+	//Сортировка массива выбором
+	for (int i = 0; i < n; i++) //Счётчик 'i' выбирает элемент в который нужно поместить минимальное значение
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			//arr[i] - выбранный элемент
+			//arr[j] - перебирпемый элемент
+			if (arr[j] < arr[i])
+			{
+				int buffer = arr[i];
+				arr[i] = arr[j];
+				arr[j] = buffer;
+			}
+		}
 	}
-	cout << "Вывод отсортированного массива" << endl;
+	
+	//Вывод отсортированоого массива
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
