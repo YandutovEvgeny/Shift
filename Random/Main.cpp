@@ -56,7 +56,7 @@ void main()
 		for (int j = i + 1; j < n; j++)
 		{
 			//arr[i] - выбранный элемент
-			//arr[j] - перебирпемый элемент
+			//arr[j] - перебираемый элемент
 			if (arr[j] < arr[i])
 			{
 				int buffer = arr[i];

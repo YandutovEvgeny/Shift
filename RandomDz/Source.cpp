@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 using namespace std;
 using std::cout;
 using std::cin;
@@ -13,8 +13,8 @@ void main()
 	const int n = 10;
 	int arr[n]{};
 
-	srand(time(NULL));
-	for (int i = 0; i < n;)
+	//srand(time(NULL));
+	/*for (int i = 0; i < n;)
 	{
 		bool counter = false;
 		int newRandom = rand() % 10;	
@@ -34,8 +34,24 @@ void main()
 			i++;
 		}
 		
-	}
+	}*/
 	
+	for (int i = 0; i < n; i++) 
+	{
+		arr[i] = rand() % 10;
+		for (int j = 0; j < i; j++)
+		{
+			if (arr[i] == arr[j] && i != j)
+			{
+				arr[i] = rand() % 10;
+				j = -1;
+			}
+
+
+		}
+		
+
+	}
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
